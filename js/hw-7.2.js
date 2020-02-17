@@ -7,10 +7,18 @@ const ingredients = [
   "Приправы"
 ];
 
-const items = ingredients.map(e => {
-  const products = document.querySelector("#ingredients");
-  const li = document.createElement("li");
-  li.textContent = e;
-  products.append(li);
-  return li;
-});
+const products = document.querySelector("#ingredients");
+
+const itemList = function(array) {
+  const items = [];
+  array.map(e => {
+    const item = document.createElement("li");
+    item.textContent = e;
+    items.push(item);
+  });
+  return items;
+};
+
+const ingredientsItem = itemList(ingredients);
+
+products.append(...ingredientsItem);

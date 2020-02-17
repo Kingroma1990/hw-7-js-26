@@ -18,9 +18,31 @@ const images = [
 
 const gallery = document.querySelector("#gallery");
 
-for (let img of images)
-  gallery.insertAdjacentHTML(
-    "beforeEnd",
-    `<li><img src='${img.url}' 
- alt='${img.alt}'></li>`
+const itemGallery = function(array) {
+  const items = [];
+  array.map(el => {
+    const galleryItem = document.createElement("li");
+    galleryItem.classList.add("gallery-item");
+    const imag = createImg(el);
+    galleryItem.append(imag);
+    items.push(galleryItem);
+  });
+  return items;
+};
+
+const createImg = function(object) {
+  const imgWrap = document.createElement("div");
+  imgWrap.classList.add("img-wrap");
+  imgWrap.insertAdjacentHTML(
+    "afterbegin",
+    `<img src="${object.url}" alt="${object.alt}" class="gallery-img">`
   );
+  const img = document.querySelector(".img");
+
+  imgWrap.append(img);
+  return imgWrap;
+};
+
+const galleryItems = itemGallery(images);
+
+gallery.append(...galleryItems);
