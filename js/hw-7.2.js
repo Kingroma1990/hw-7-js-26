@@ -9,15 +9,12 @@ const ingredients = [
 
 const products = document.querySelector("#ingredients");
 
-const itemList = function(array) {
-  const items = [];
+const itemList = array =>
   array.map(e => {
     const item = document.createElement("li");
     item.textContent = e;
-    items.push(item);
+    return item;
   });
-  return items;
-};
 
 const ingredientsItem = itemList(ingredients);
 
