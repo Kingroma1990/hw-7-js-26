@@ -16,45 +16,9 @@ const images = [
   }
 ];
 
-// const gallery = document.querySelector("#gallery");
 
-// const itemGallery = function(array) {
-//   const items = [];
-//   array.map(el => {
-//     const galleryItem = document.createElement("li");
-//     galleryItem.classList.add("gallery-item");
-//     const imag = createImg(el);
-//     galleryItem.append(imag);
-//     // items.push(galleryItem);
-//   });
-//   return items;
-// };
-
-// const createImg = function(object) {
-//   const imgWrap = document.createElement("div");
-//   imgWrap.classList.add("img-wrap");
-//   imgWrap.insertAdjacentHTML(
-//     "afterbegin",
-//     `<img src="${object.url}" alt="${object.alt}" class="gallery-img">`
-//   );
-//   const img = document.querySelector(".img");
-
-//   imgWrap.append(img);
-//   return imgWrap;
-// };
-
-// const galleryItems = itemGallery(images);
-
-// gallery.append(...galleryItems);
-
-
-
-const createGalleryItem = ({ url, alt }) => `<li><img src="${url}" alt="${alt}"></li>`;
-
-const galleryMarkup = images.reduce((acc, item) => acc + createGalleryItem(item), '');
-
-const galleryList = document.querySelector('#gallery');
-galleryList.insertAdjacentHTML('afterbegin', galleryMarkup);
-
-
-
+const icon = images.map(image =>
+  `<li class = "gallery__item"><img class = "gallery__item-image" src = "${image.url}" alt = "${image.alt}"/></li>`).join("");
+console.log(icon);
+const gallery = document.querySelector("#gallery");
+gallery.insertAdjacentHTML("beforebegin", icon)
